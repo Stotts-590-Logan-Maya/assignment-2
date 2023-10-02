@@ -79,9 +79,10 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String toParse = JOptionPane.showInputDialog("Enter the info of the person in the following format, separating each value with a ',':\n" +
-                        "first last,id,occupation,salary\n" +
-                        "where occupation is either 'Student', 'Professor', or 'Employee' (note that students have salary = 0).");
+                String toParse = JOptionPane.showInputDialog("Enter the info of the person in the following format, separating each value with a ',':\n\n" +
+                        "first last,id,occupation,salary\n\n" +
+                        "where occupation is either 'Student', 'Professor', or 'Employee' (note that students have salary = 0, always).\n"+
+                        "and salary is an integer.");
 
                 String[] arr = toParse.split(",");
 
@@ -98,16 +99,20 @@ public class Main {
                 if (occ.equals("Professor")){
                     Professor prof = new Professor(name, id, salary);
                     people.add(prof);
-                    frame.add(new JLabel(Integer.toString(salary)));
+                    frame.add(new JLabel("$"+Integer.toString(salary)));
                 } else if (occ.equals("Student")) {
                     Student stud = new Student(name, id, salary);
                     people.add(stud);
-                    frame.add(new JLabel("0"));
+                    frame.add(new JLabel("$0"));
                 } else if (occ.equals("Employee")) {
                     Employee emp = new Employee(name, id, occ, salary);
                     people.add(emp);
-                    frame.add(new JLabel(Integer.toString(salary)));
+                    frame.add(new JLabel("$"+Integer.toString(salary)));
                 }
+
+                // hacky way to get grid to update without changing the window size manually
+                frame.setSize(new Dimension(frame.getWidth() - 1, frame.getHeight()));
+                frame.setSize(new Dimension(frame.getWidth() + 1, frame.getHeight()));
             }
         });
     }
