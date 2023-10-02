@@ -1,10 +1,15 @@
 public class Student extends PersonImpl{
-    public Student(String name, String id) {
-        super(name, id);
+    public Student(String name, String id, int salary) {
+        super(name, id, "Student", salary);
     }
 
     @Override
     public String getOccupation() {
-        return "Student";
+        return "Professor";
+    }
+
+    @Override
+    public int getSalary() {
+        return 0;
     }
 }
