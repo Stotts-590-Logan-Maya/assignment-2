@@ -1,4 +1,4 @@
-# assignment-3
+# assignment-3 part 2
 
 Pick a language from this list and explain its object model (like I did with Java and Javascript); how is each pillar expressed in the language you picked? What forms of polymorphism does it allow?
 
